@@ -18,4 +18,8 @@ class Money
     {
         return (string) $this->value();
     }
+    public function getAmount()
+    {
+        return $this->amount;
+    }
 }
