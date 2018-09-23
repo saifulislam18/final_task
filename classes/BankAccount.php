@@ -19,7 +19,7 @@ class BankAccount implements IfaceBankAccount
     {
         $depositAmount=$amount->getAmount();
         $currentBalance=$this->balance->getAmount();
-        return $this->balance=$currentBalance+$depositAmount;
+        $this->balance=$currentBalance+$depositAmount;
     }
 
     public function transfer(Money $amount, BankAccount $account)
@@ -31,7 +31,7 @@ class BankAccount implements IfaceBankAccount
             throw new Exception('Withdrawl amount larger than balance');
         }else{
             $account->balance=$transferAmount+$account->balance;
-            return $this->balance=$currentBalance-$transferAmount;
+            $this->balance=$currentBalance-$transferAmount;
         }
     }
     public function withdraw(Money $amount)
@@ -39,7 +39,7 @@ class BankAccount implements IfaceBankAccount
         $withdrawAmount=$amount->getAmount();
         if (is_object($this->balance)) {
             $currentBalance=$this->balance->getAmount();   
-            return $this->balance=$currentBalance-$withdrawAmount;
+            $this->balance=$currentBalance-$withdrawAmount;
         }elseif ($withdrawAmount > $this->balance) {
             throw new Exception('Withdrawl amount larger than balance');
         }       
